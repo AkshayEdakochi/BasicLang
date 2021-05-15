@@ -1,15 +1,15 @@
 grammar BasicLang;
 
 parse
- : block EOF
+ : statemets EOF
  ;
-
-block
- : stat*
+statemets
+ : stat+
  ;
 
 stat
- : assignment
+ : block
+ | assignment
  | if_stat
  | while_stat
  | log
@@ -17,6 +17,11 @@ stat
  //| samkhyaFunction
  | OTHER {System.err.println("unknown char: " + $OTHER.text);}
  ;
+
+ block
+  : OBRACE statemets CBRACE
+  ;
+
 
 samkhyaFunction
  : 'സംഖ്യ' samkhyaExpr
@@ -32,9 +37,15 @@ assignment
  ;
 
 if_stat
- :  expr AANENKIL stat_block_if (ATHAVA condition_block AANENKIL)* (ALLENKIL stat_block)?
+ :  expr AANENKIL block (athavaBlock)* (allenkilBlock)?
  ;
-
+ athavaBlock
+  : ATHAVA expr AANENKIL block
+  ;
+ allenkilBlock
+    : ALLENKIL block
+    ;
+/* 
 condition_block
  : expr stat_block
  ;
@@ -48,9 +59,9 @@ stat_block
  : OBRACE block CBRACE
  | stat
  ;
-
+*/
 while_stat
- : expr AAYIRIKKUMPOL stat_block
+ : expr AAYIRIKKUMPOL block
  ;
 
 log

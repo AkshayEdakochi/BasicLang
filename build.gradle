@@ -15,8 +15,8 @@ dependencies {
     implementation 'org.jetbrains:annotations:20.1.0'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
-    antlr "org.antlr:antlr4:4.8"
-    compile "org.antlr:antlr4-runtime:4.8"
+    antlr "org.antlr:antlr4:4.9"
+    compile "org.antlr:antlr4-runtime:4.9"
 }
 
 test {
