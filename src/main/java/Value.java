@@ -4,7 +4,7 @@ public class Value {
     public static Value VOID = new Value(new Object());
 
     final Object value;
-
+    
     public Value(Object value) {
         this.value = value;
     }
@@ -42,6 +42,11 @@ public class Value {
     public boolean isInteger(){
         return value instanceof Integer;
     }
+
+    public  boolean isNumeric(){
+        return  (this.isDouble() || this.isInteger());
+    }
+    public boolean isString() {return  value instanceof String; }
 
 
 

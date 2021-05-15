@@ -17,15 +17,15 @@ public interface BasicLangListener extends ParseTreeListener {
 	 */
 	void exitParse(BasicLangParser.ParseContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link BasicLangParser#block}.
+	 * Enter a parse tree produced by {@link BasicLangParser#statemets}.
 	 * @param ctx the parse tree
 	 */
-	void enterBlock(BasicLangParser.BlockContext ctx);
+	void enterStatemets(BasicLangParser.StatemetsContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link BasicLangParser#block}.
+	 * Exit a parse tree produced by {@link BasicLangParser#statemets}.
 	 * @param ctx the parse tree
 	 */
-	void exitBlock(BasicLangParser.BlockContext ctx);
+	void exitStatemets(BasicLangParser.StatemetsContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link BasicLangParser#stat}.
 	 * @param ctx the parse tree
@@ -36,6 +36,50 @@ public interface BasicLangListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitStat(BasicLangParser.StatContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link BasicLangParser#block}.
+	 * @param ctx the parse tree
+	 */
+	void enterBlock(BasicLangParser.BlockContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link BasicLangParser#block}.
+	 * @param ctx the parse tree
+	 */
+	void exitBlock(BasicLangParser.BlockContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link BasicLangParser#samkhyaFunction}.
+	 * @param ctx the parse tree
+	 */
+	void enterSamkhyaFunction(BasicLangParser.SamkhyaFunctionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link BasicLangParser#samkhyaFunction}.
+	 * @param ctx the parse tree
+	 */
+	void exitSamkhyaFunction(BasicLangParser.SamkhyaFunctionContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code directSamkhyaCall}
+	 * labeled alternative in {@link BasicLangParser#samkhyaExpr}.
+	 * @param ctx the parse tree
+	 */
+	void enterDirectSamkhyaCall(BasicLangParser.DirectSamkhyaCallContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code directSamkhyaCall}
+	 * labeled alternative in {@link BasicLangParser#samkhyaExpr}.
+	 * @param ctx the parse tree
+	 */
+	void exitDirectSamkhyaCall(BasicLangParser.DirectSamkhyaCallContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code SamkhyaSweekarikkuka}
+	 * labeled alternative in {@link BasicLangParser#samkhyaExpr}.
+	 * @param ctx the parse tree
+	 */
+	void enterSamkhyaSweekarikkuka(BasicLangParser.SamkhyaSweekarikkukaContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code SamkhyaSweekarikkuka}
+	 * labeled alternative in {@link BasicLangParser#samkhyaExpr}.
+	 * @param ctx the parse tree
+	 */
+	void exitSamkhyaSweekarikkuka(BasicLangParser.SamkhyaSweekarikkukaContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link BasicLangParser#assignment}.
 	 * @param ctx the parse tree
@@ -57,35 +101,25 @@ public interface BasicLangListener extends ParseTreeListener {
 	 */
 	void exitIf_stat(BasicLangParser.If_statContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link BasicLangParser#condition_block}.
+	 * Enter a parse tree produced by {@link BasicLangParser#athavaBlock}.
 	 * @param ctx the parse tree
 	 */
-	void enterCondition_block(BasicLangParser.Condition_blockContext ctx);
+	void enterAthavaBlock(BasicLangParser.AthavaBlockContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link BasicLangParser#condition_block}.
+	 * Exit a parse tree produced by {@link BasicLangParser#athavaBlock}.
 	 * @param ctx the parse tree
 	 */
-	void exitCondition_block(BasicLangParser.Condition_blockContext ctx);
+	void exitAthavaBlock(BasicLangParser.AthavaBlockContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link BasicLangParser#stat_block_if}.
+	 * Enter a parse tree produced by {@link BasicLangParser#allenkilBlock}.
 	 * @param ctx the parse tree
 	 */
-	void enterStat_block_if(BasicLangParser.Stat_block_ifContext ctx);
+	void enterAllenkilBlock(BasicLangParser.AllenkilBlockContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link BasicLangParser#stat_block_if}.
+	 * Exit a parse tree produced by {@link BasicLangParser#allenkilBlock}.
 	 * @param ctx the parse tree
 	 */
-	void exitStat_block_if(BasicLangParser.Stat_block_ifContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link BasicLangParser#stat_block}.
-	 * @param ctx the parse tree
-	 */
-	void enterStat_block(BasicLangParser.Stat_blockContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link BasicLangParser#stat_block}.
-	 * @param ctx the parse tree
-	 */
-	void exitStat_block(BasicLangParser.Stat_blockContext ctx);
+	void exitAllenkilBlock(BasicLangParser.AllenkilBlockContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link BasicLangParser#while_stat}.
 	 * @param ctx the parse tree
@@ -106,6 +140,26 @@ public interface BasicLangListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitLog(BasicLangParser.LogContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link BasicLangParser#sweekarikkukaStatement}.
+	 * @param ctx the parse tree
+	 */
+	void enterSweekarikkukaStatement(BasicLangParser.SweekarikkukaStatementContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link BasicLangParser#sweekarikkukaStatement}.
+	 * @param ctx the parse tree
+	 */
+	void exitSweekarikkukaStatement(BasicLangParser.SweekarikkukaStatementContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link BasicLangParser#sweekarikkukaExpr}.
+	 * @param ctx the parse tree
+	 */
+	void enterSweekarikkukaExpr(BasicLangParser.SweekarikkukaExprContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link BasicLangParser#sweekarikkukaExpr}.
+	 * @param ctx the parse tree
+	 */
+	void exitSweekarikkukaExpr(BasicLangParser.SweekarikkukaExprContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code notExpr}
 	 * labeled alternative in {@link BasicLangParser#expr}.
@@ -130,6 +184,18 @@ public interface BasicLangListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitUnaryMinusExpr(BasicLangParser.UnaryMinusExprContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code samkhyaFunctionExpr}
+	 * labeled alternative in {@link BasicLangParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void enterSamkhyaFunctionExpr(BasicLangParser.SamkhyaFunctionExprContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code samkhyaFunctionExpr}
+	 * labeled alternative in {@link BasicLangParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void exitSamkhyaFunctionExpr(BasicLangParser.SamkhyaFunctionExprContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code multiplicationExpr}
 	 * labeled alternative in {@link BasicLangParser#expr}.
@@ -215,87 +281,83 @@ public interface BasicLangListener extends ParseTreeListener {
 	 */
 	void exitAndExpr(BasicLangParser.AndExprContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code parExpr}
-	 * labeled alternative in {@link BasicLangParser#atom}.
+	 * Enter a parse tree produced by {@link BasicLangParser#atom}.
 	 * @param ctx the parse tree
 	 */
-	void enterParExpr(BasicLangParser.ParExprContext ctx);
+	void enterAtom(BasicLangParser.AtomContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code parExpr}
-	 * labeled alternative in {@link BasicLangParser#atom}.
+	 * Exit a parse tree produced by {@link BasicLangParser#atom}.
 	 * @param ctx the parse tree
 	 */
-	void exitParExpr(BasicLangParser.ParExprContext ctx);
+	void exitAtom(BasicLangParser.AtomContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code IntAtom}
-	 * labeled alternative in {@link BasicLangParser#atom}.
+	 * Enter a parse tree produced by {@link BasicLangParser#parathesisedExpr}.
 	 * @param ctx the parse tree
 	 */
-	void enterIntAtom(BasicLangParser.IntAtomContext ctx);
+	void enterParathesisedExpr(BasicLangParser.ParathesisedExprContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code IntAtom}
-	 * labeled alternative in {@link BasicLangParser#atom}.
+	 * Exit a parse tree produced by {@link BasicLangParser#parathesisedExpr}.
 	 * @param ctx the parse tree
 	 */
-	void exitIntAtom(BasicLangParser.IntAtomContext ctx);
+	void exitParathesisedExpr(BasicLangParser.ParathesisedExprContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code FloatAtom}
-	 * labeled alternative in {@link BasicLangParser#atom}.
+	 * Enter a parse tree produced by {@link BasicLangParser#integerAtom}.
+	 * @param ctx the parse tree
+	 */
+	void enterIntegerAtom(BasicLangParser.IntegerAtomContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link BasicLangParser#integerAtom}.
+	 * @param ctx the parse tree
+	 */
+	void exitIntegerAtom(BasicLangParser.IntegerAtomContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link BasicLangParser#floatAtom}.
 	 * @param ctx the parse tree
 	 */
 	void enterFloatAtom(BasicLangParser.FloatAtomContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code FloatAtom}
-	 * labeled alternative in {@link BasicLangParser#atom}.
+	 * Exit a parse tree produced by {@link BasicLangParser#floatAtom}.
 	 * @param ctx the parse tree
 	 */
 	void exitFloatAtom(BasicLangParser.FloatAtomContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code booleanAtom}
-	 * labeled alternative in {@link BasicLangParser#atom}.
+	 * Enter a parse tree produced by {@link BasicLangParser#booleanAtom}.
 	 * @param ctx the parse tree
 	 */
 	void enterBooleanAtom(BasicLangParser.BooleanAtomContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code booleanAtom}
-	 * labeled alternative in {@link BasicLangParser#atom}.
+	 * Exit a parse tree produced by {@link BasicLangParser#booleanAtom}.
 	 * @param ctx the parse tree
 	 */
 	void exitBooleanAtom(BasicLangParser.BooleanAtomContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code idAtom}
-	 * labeled alternative in {@link BasicLangParser#atom}.
+	 * Enter a parse tree produced by {@link BasicLangParser#identifier}.
 	 * @param ctx the parse tree
 	 */
-	void enterIdAtom(BasicLangParser.IdAtomContext ctx);
+	void enterIdentifier(BasicLangParser.IdentifierContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code idAtom}
-	 * labeled alternative in {@link BasicLangParser#atom}.
+	 * Exit a parse tree produced by {@link BasicLangParser#identifier}.
 	 * @param ctx the parse tree
 	 */
-	void exitIdAtom(BasicLangParser.IdAtomContext ctx);
+	void exitIdentifier(BasicLangParser.IdentifierContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code stringAtom}
-	 * labeled alternative in {@link BasicLangParser#atom}.
+	 * Enter a parse tree produced by {@link BasicLangParser#string}.
 	 * @param ctx the parse tree
 	 */
-	void enterStringAtom(BasicLangParser.StringAtomContext ctx);
+	void enterString(BasicLangParser.StringContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code stringAtom}
-	 * labeled alternative in {@link BasicLangParser#atom}.
+	 * Exit a parse tree produced by {@link BasicLangParser#string}.
 	 * @param ctx the parse tree
 	 */
-	void exitStringAtom(BasicLangParser.StringAtomContext ctx);
+	void exitString(BasicLangParser.StringContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code nilAtom}
-	 * labeled alternative in {@link BasicLangParser#atom}.
+	 * Enter a parse tree produced by {@link BasicLangParser#nil}.
 	 * @param ctx the parse tree
 	 */
-	void enterNilAtom(BasicLangParser.NilAtomContext ctx);
+	void enterNil(BasicLangParser.NilContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code nilAtom}
-	 * labeled alternative in {@link BasicLangParser#atom}.
+	 * Exit a parse tree produced by {@link BasicLangParser#nil}.
 	 * @param ctx the parse tree
 	 */
-	void exitNilAtom(BasicLangParser.NilAtomContext ctx);
+	void exitNil(BasicLangParser.NilContext ctx);
 }

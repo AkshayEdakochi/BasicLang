@@ -27,13 +27,13 @@ public class BasicLangBaseListener implements BasicLangListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterBlock(BasicLangParser.BlockContext ctx) { }
+	@Override public void enterStatemets(BasicLangParser.StatemetsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitBlock(BasicLangParser.BlockContext ctx) { }
+	@Override public void exitStatemets(BasicLangParser.StatemetsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -46,6 +46,54 @@ public class BasicLangBaseListener implements BasicLangListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitStat(BasicLangParser.StatContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterBlock(BasicLangParser.BlockContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitBlock(BasicLangParser.BlockContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterSamkhyaFunction(BasicLangParser.SamkhyaFunctionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitSamkhyaFunction(BasicLangParser.SamkhyaFunctionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterDirectSamkhyaCall(BasicLangParser.DirectSamkhyaCallContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitDirectSamkhyaCall(BasicLangParser.DirectSamkhyaCallContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterSamkhyaSweekarikkuka(BasicLangParser.SamkhyaSweekarikkukaContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitSamkhyaSweekarikkuka(BasicLangParser.SamkhyaSweekarikkukaContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -75,37 +123,25 @@ public class BasicLangBaseListener implements BasicLangListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterCondition_block(BasicLangParser.Condition_blockContext ctx) { }
+	@Override public void enterAthavaBlock(BasicLangParser.AthavaBlockContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitCondition_block(BasicLangParser.Condition_blockContext ctx) { }
+	@Override public void exitAthavaBlock(BasicLangParser.AthavaBlockContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterStat_block_if(BasicLangParser.Stat_block_ifContext ctx) { }
+	@Override public void enterAllenkilBlock(BasicLangParser.AllenkilBlockContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitStat_block_if(BasicLangParser.Stat_block_ifContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterStat_block(BasicLangParser.Stat_blockContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitStat_block(BasicLangParser.Stat_blockContext ctx) { }
+	@Override public void exitAllenkilBlock(BasicLangParser.AllenkilBlockContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -135,6 +171,30 @@ public class BasicLangBaseListener implements BasicLangListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterSweekarikkukaStatement(BasicLangParser.SweekarikkukaStatementContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitSweekarikkukaStatement(BasicLangParser.SweekarikkukaStatementContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterSweekarikkukaExpr(BasicLangParser.SweekarikkukaExprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitSweekarikkukaExpr(BasicLangParser.SweekarikkukaExprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterNotExpr(BasicLangParser.NotExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -154,6 +214,18 @@ public class BasicLangBaseListener implements BasicLangListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitUnaryMinusExpr(BasicLangParser.UnaryMinusExprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterSamkhyaFunctionExpr(BasicLangParser.SamkhyaFunctionExprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitSamkhyaFunctionExpr(BasicLangParser.SamkhyaFunctionExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -243,25 +315,37 @@ public class BasicLangBaseListener implements BasicLangListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterParExpr(BasicLangParser.ParExprContext ctx) { }
+	@Override public void enterAtom(BasicLangParser.AtomContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitParExpr(BasicLangParser.ParExprContext ctx) { }
+	@Override public void exitAtom(BasicLangParser.AtomContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterIntAtom(BasicLangParser.IntAtomContext ctx) { }
+	@Override public void enterParathesisedExpr(BasicLangParser.ParathesisedExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitIntAtom(BasicLangParser.IntAtomContext ctx) { }
+	@Override public void exitParathesisedExpr(BasicLangParser.ParathesisedExprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterIntegerAtom(BasicLangParser.IntegerAtomContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitIntegerAtom(BasicLangParser.IntegerAtomContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -291,37 +375,37 @@ public class BasicLangBaseListener implements BasicLangListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterIdAtom(BasicLangParser.IdAtomContext ctx) { }
+	@Override public void enterIdentifier(BasicLangParser.IdentifierContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitIdAtom(BasicLangParser.IdAtomContext ctx) { }
+	@Override public void exitIdentifier(BasicLangParser.IdentifierContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterStringAtom(BasicLangParser.StringAtomContext ctx) { }
+	@Override public void enterString(BasicLangParser.StringContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitStringAtom(BasicLangParser.StringAtomContext ctx) { }
+	@Override public void exitString(BasicLangParser.StringContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterNilAtom(BasicLangParser.NilAtomContext ctx) { }
+	@Override public void enterNil(BasicLangParser.NilContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitNilAtom(BasicLangParser.NilAtomContext ctx) { }
+	@Override public void exitNil(BasicLangParser.NilContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

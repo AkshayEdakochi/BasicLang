@@ -16,17 +16,43 @@ public interface BasicLangVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitParse(BasicLangParser.ParseContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link BasicLangParser#block}.
+	 * Visit a parse tree produced by {@link BasicLangParser#statemets}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitBlock(BasicLangParser.BlockContext ctx);
+	T visitStatemets(BasicLangParser.StatemetsContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link BasicLangParser#stat}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitStat(BasicLangParser.StatContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link BasicLangParser#block}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitBlock(BasicLangParser.BlockContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link BasicLangParser#samkhyaFunction}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitSamkhyaFunction(BasicLangParser.SamkhyaFunctionContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code directSamkhyaCall}
+	 * labeled alternative in {@link BasicLangParser#samkhyaExpr}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitDirectSamkhyaCall(BasicLangParser.DirectSamkhyaCallContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code SamkhyaSweekarikkuka}
+	 * labeled alternative in {@link BasicLangParser#samkhyaExpr}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitSamkhyaSweekarikkuka(BasicLangParser.SamkhyaSweekarikkukaContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link BasicLangParser#assignment}.
 	 * @param ctx the parse tree
@@ -40,23 +66,17 @@ public interface BasicLangVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitIf_stat(BasicLangParser.If_statContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link BasicLangParser#condition_block}.
+	 * Visit a parse tree produced by {@link BasicLangParser#athavaBlock}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitCondition_block(BasicLangParser.Condition_blockContext ctx);
+	T visitAthavaBlock(BasicLangParser.AthavaBlockContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link BasicLangParser#stat_block_if}.
+	 * Visit a parse tree produced by {@link BasicLangParser#allenkilBlock}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitStat_block_if(BasicLangParser.Stat_block_ifContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link BasicLangParser#stat_block}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitStat_block(BasicLangParser.Stat_blockContext ctx);
+	T visitAllenkilBlock(BasicLangParser.AllenkilBlockContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link BasicLangParser#while_stat}.
 	 * @param ctx the parse tree
@@ -69,6 +89,18 @@ public interface BasicLangVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitLog(BasicLangParser.LogContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link BasicLangParser#sweekarikkukaStatement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitSweekarikkukaStatement(BasicLangParser.SweekarikkukaStatementContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link BasicLangParser#sweekarikkukaExpr}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitSweekarikkukaExpr(BasicLangParser.SweekarikkukaExprContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code notExpr}
 	 * labeled alternative in {@link BasicLangParser#expr}.
@@ -83,6 +115,13 @@ public interface BasicLangVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitUnaryMinusExpr(BasicLangParser.UnaryMinusExprContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code samkhyaFunctionExpr}
+	 * labeled alternative in {@link BasicLangParser#expr}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitSamkhyaFunctionExpr(BasicLangParser.SamkhyaFunctionExprContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code multiplicationExpr}
 	 * labeled alternative in {@link BasicLangParser#expr}.
@@ -133,52 +172,51 @@ public interface BasicLangVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitAndExpr(BasicLangParser.AndExprContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code parExpr}
-	 * labeled alternative in {@link BasicLangParser#atom}.
+	 * Visit a parse tree produced by {@link BasicLangParser#atom}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitParExpr(BasicLangParser.ParExprContext ctx);
+	T visitAtom(BasicLangParser.AtomContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code IntAtom}
-	 * labeled alternative in {@link BasicLangParser#atom}.
+	 * Visit a parse tree produced by {@link BasicLangParser#parathesisedExpr}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitIntAtom(BasicLangParser.IntAtomContext ctx);
+	T visitParathesisedExpr(BasicLangParser.ParathesisedExprContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code FloatAtom}
-	 * labeled alternative in {@link BasicLangParser#atom}.
+	 * Visit a parse tree produced by {@link BasicLangParser#integerAtom}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitIntegerAtom(BasicLangParser.IntegerAtomContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link BasicLangParser#floatAtom}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitFloatAtom(BasicLangParser.FloatAtomContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code booleanAtom}
-	 * labeled alternative in {@link BasicLangParser#atom}.
+	 * Visit a parse tree produced by {@link BasicLangParser#booleanAtom}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitBooleanAtom(BasicLangParser.BooleanAtomContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code idAtom}
-	 * labeled alternative in {@link BasicLangParser#atom}.
+	 * Visit a parse tree produced by {@link BasicLangParser#identifier}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitIdAtom(BasicLangParser.IdAtomContext ctx);
+	T visitIdentifier(BasicLangParser.IdentifierContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code stringAtom}
-	 * labeled alternative in {@link BasicLangParser#atom}.
+	 * Visit a parse tree produced by {@link BasicLangParser#string}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitStringAtom(BasicLangParser.StringAtomContext ctx);
+	T visitString(BasicLangParser.StringContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code nilAtom}
-	 * labeled alternative in {@link BasicLangParser#atom}.
+	 * Visit a parse tree produced by {@link BasicLangParser#nil}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitNilAtom(BasicLangParser.NilAtomContext ctx);
+	T visitNil(BasicLangParser.NilContext ctx);
 }
