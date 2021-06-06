@@ -14,15 +14,76 @@ public class EvalVisitor extends BasicLangBaseVisitor<Value> {
 
     // store variables (there's only one global scope!)
     private Map<String, Value> memory = new HashMap<String, Value>();
-
+    //For break statement
+    Boolean breakOn = false;
     Scanner sc = new Scanner(System.in);
-    // assignment/id overrides
+   /*
     @Override
     public Value visitAssignment(BasicLangParser.AssignmentContext ctx) {
         String id = ctx.ID().getText();
         Value value = this.visit(ctx.expr());
         return memory.put(id, value);
-    }
+    }*/
+    @Override
+    public Value visitVariableAssignment(BasicLangParser.VariableAssignmentContext ctx) { 
+        String id = ctx.ID().getText();
+        Value value = this.visit(ctx.expr());
+        return memory.put(id, value); 
+        }
+    @Override 
+    public Value visitShreniInitialisation(BasicLangParser.ShreniInitialisationContext ctx) { 
+        String id = ctx.ID().getText();
+        Value value = this.visit(ctx.elementList());
+        return memory.put(id,value);
+        }
+    //Overrides ShreniIndexed returns the value stored at that Index
+    @Override 
+    public Value visitShreniIndexed(BasicLangParser.ShreniIndexedContext ctx) { 
+        
+        String id = ctx.identifier().ID().getText();
+        Value index = visit(ctx.indexingExpr().expr());
+        //System.out.println(id +"yoyo" +index); 
+        Value listAsValue = memory.get(id);
+        Value value;
+        if(listAsValue == null){
+            throw new RuntimeException ("no such variable: " +id);
+        }
+        else if(!listAsValue.isList()){
+            throw new RuntimeException ("no such List: " +id);
+        }
+        else{
+            value = listAsValue.asList().get(index.asInteger());
+        }
+        //System.out.println("val is :" + value);
+        //System.out.println("isInteger :" + value.isInteger());
+        return value; }
+    
+    //Overrides shreniIndexed expr - recivec a value from shreniIndexed
+    @Override 
+    public Value visitShreniIndexedExpr(BasicLangParser.ShreniIndexedExprContext ctx) { 
+        
+        Value value = visit(ctx.shreniIndexed());
+        //System.out.println("Inside shreniIndexedExpr: isiteger:"+value.isInteger());
+        return value; }
+
+    //Overrides shreniMultipleIndexed as
+    @Override
+    public Value visitShreniMultipleIndexed(BasicLangParser.ShreniMultipleIndexedContext ctx) { 
+        Value list = visit(ctx.shreniIndexed());
+        List<BasicLangParser.IndexingExprContext> exprContexts = ctx.indexingExpr();
+        Value value = list;
+        for (BasicLangParser.IndexingExprContext exprContext : exprContexts){
+            Value index = visit(exprContext.expr());
+            if(value.isList())
+                value = value.asList().get(index.asInteger());
+            else
+                throw new RuntimeException(list + " is not a list"); 
+        }
+
+        return value; }
+
+
+
     /*
     @Override
     public Value visitIdAtom(BasicLangParser.IdAtomContext ctx) {
@@ -41,6 +102,36 @@ public class EvalVisitor extends BasicLangBaseVisitor<Value> {
             throw new RuntimeException ("no such variable: " +id);
         }
         return value; }
+    
+    //overrides visitElementList. returns a list of atom elements as Value object
+    @Override public Value visitShreniElements(BasicLangParser.ShreniElementsContext ctx) { 
+        List<BasicLangParser.ShreniElementContext> elementContexts = ctx.shreniElement();
+        List<Value> list = new ArrayList<Value>();
+        Value element;
+        for (BasicLangParser.ShreniElementContext elementContext: elementContexts){
+            if(elementContext != null){
+                element = visit(elementContext);
+                //System.out.println(element);
+                list.add(element);
+            }
+            
+        }
+        /*System.out.println(list);
+        System.out.println(list.get(0).isInteger());
+        System.out.println(list.get(1).isInteger());
+        System.out.println(list.get(2).isInteger());*/
+        Value listAsValue = new Value(list);
+        return listAsValue; 
+    }
+
+    //overrides elementList. receives listAsValue from ShreniElements and returns it
+    @Override 
+    public Value visitElementList(BasicLangParser.ElementListContext ctx) { 
+        Value listAsValue = visit(ctx.shreniElements());
+        return listAsValue; 
+    }
+ 
+
 
 
     // atom overrides
@@ -211,9 +302,9 @@ public class EvalVisitor extends BasicLangBaseVisitor<Value> {
     public Value visitDirectSamkhyaCall(BasicLangParser.DirectSamkhyaCallContext ctx) {
             int val =0;
             String str;
-            if(ctx.string() != null) 
-                {str = this.visit(ctx.string()).asString();
-                System.out.println(str);
+            if(ctx.expr() != null) 
+                {str = this.visit(ctx.expr()).asString();
+                //System.out.println(str);
                 }
             else str = this.visit(ctx.identifier()).asString(); 
         if (ctx.integerAtom() != null){
@@ -230,7 +321,19 @@ public class EvalVisitor extends BasicLangBaseVisitor<Value> {
     public Value visitSamkhyaSweekarikkuka(BasicLangParser.SamkhyaSweekarikkukaContext ctx) { 
         
         Value input =  this.visit(ctx.sweekarikkukaExpr());
-        int intInput = Integer.parseInt(input.asString());
+        int intInput =0;
+        /*
+        //try-catch for NumberFromat Exception
+        try{ 
+            intInput = Integer.parseInt(input.asString());
+            }
+        catch(NumberFormatException e){
+            System.out.println("Error:Expecting a number");
+            Runtime.getRuntime().halt(0);
+            }
+        //try-catch for NumberFormatException ends
+        */
+        intInput = Integer.parseInt(input.asString());
         return new Value(intInput);
         }
     
@@ -276,6 +379,18 @@ public class EvalVisitor extends BasicLangBaseVisitor<Value> {
                     String r = right.asString();
                     return  new Value(l.equals(r));
                 }
+                else if (left.isBoolean() && right.isBoolean()){
+                    Boolean l = left.asBoolean();
+                    Boolean r = right.asBoolean();
+                    return new Value(l == r);
+                }
+                else{
+                    //System.out.println(left.equals(right));
+                    //System.out.println(left.isBoolean());
+                    //System.out.println(right.isBoolean());
+                    return new Value (left.equals(right));
+                }
+                //break;
             case BasicLangParser.NEQ:
                 /*
                 return left.isDouble() && right.isDouble() ?
@@ -291,8 +406,10 @@ public class EvalVisitor extends BasicLangBaseVisitor<Value> {
                     String r = right.asString();
                     return  new Value(!l.equals(r));
                 }
+                //break;
             default:
                 throw new RuntimeException("unknown operator: " + BasicLangParser.tokenNames[ctx.op.getType()]);
+                //return new Value("");
         }
     }
 
@@ -353,6 +470,14 @@ public class EvalVisitor extends BasicLangBaseVisitor<Value> {
         return Value.VOID;
     }
 
+    //Overrides kadakkupurath
+    @Override 
+    public Value visitKadakkuPurath(BasicLangParser.KadakkuPurathContext ctx) { 
+        breakOn = true;
+        return new Value(true);
+        }
+
+
     // while override
     @Override
     public Value visitWhile_stat(BasicLangParser.While_statContext ctx) {
@@ -360,6 +485,10 @@ public class EvalVisitor extends BasicLangBaseVisitor<Value> {
         Value value = this.visit(ctx.expr());
 
         while(value.asBoolean()) {
+            if(breakOn){
+                breakOn = false;
+                break;
+            }
 
             // evaluate the code block
             this.visit(ctx.block());

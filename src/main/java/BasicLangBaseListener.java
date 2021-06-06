@@ -63,6 +63,18 @@ public class BasicLangBaseListener implements BasicLangListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterKadakkuPurath(BasicLangParser.KadakkuPurathContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitKadakkuPurath(BasicLangParser.KadakkuPurathContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterSamkhyaFunction(BasicLangParser.SamkhyaFunctionContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -106,6 +118,66 @@ public class BasicLangBaseListener implements BasicLangListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitAssignment(BasicLangParser.AssignmentContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterVariableAssignment(BasicLangParser.VariableAssignmentContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitVariableAssignment(BasicLangParser.VariableAssignmentContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterShreniInitialisation(BasicLangParser.ShreniInitialisationContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitShreniInitialisation(BasicLangParser.ShreniInitialisationContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterElementList(BasicLangParser.ElementListContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitElementList(BasicLangParser.ElementListContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterShreniElements(BasicLangParser.ShreniElementsContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitShreniElements(BasicLangParser.ShreniElementsContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterShreniElement(BasicLangParser.ShreniElementContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitShreniElement(BasicLangParser.ShreniElementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -267,6 +339,18 @@ public class BasicLangBaseListener implements BasicLangListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterShreniMultipleIndexedExpr(BasicLangParser.ShreniMultipleIndexedExprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitShreniMultipleIndexedExpr(BasicLangParser.ShreniMultipleIndexedExprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterAdditiveExpr(BasicLangParser.AdditiveExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -274,6 +358,18 @@ public class BasicLangBaseListener implements BasicLangListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitAdditiveExpr(BasicLangParser.AdditiveExprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterShreniIndexedExpr(BasicLangParser.ShreniIndexedExprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitShreniIndexedExpr(BasicLangParser.ShreniIndexedExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -310,6 +406,42 @@ public class BasicLangBaseListener implements BasicLangListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitAndExpr(BasicLangParser.AndExprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterShreniIndexed(BasicLangParser.ShreniIndexedContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitShreniIndexed(BasicLangParser.ShreniIndexedContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterShreniMultipleIndexed(BasicLangParser.ShreniMultipleIndexedContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitShreniMultipleIndexed(BasicLangParser.ShreniMultipleIndexedContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterIndexingExpr(BasicLangParser.IndexingExprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitIndexingExpr(BasicLangParser.IndexingExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

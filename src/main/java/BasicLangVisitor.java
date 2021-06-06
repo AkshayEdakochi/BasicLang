@@ -34,6 +34,12 @@ public interface BasicLangVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitBlock(BasicLangParser.BlockContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link BasicLangParser#kadakkuPurath}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitKadakkuPurath(BasicLangParser.KadakkuPurathContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link BasicLangParser#samkhyaFunction}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -59,6 +65,36 @@ public interface BasicLangVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitAssignment(BasicLangParser.AssignmentContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link BasicLangParser#variableAssignment}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitVariableAssignment(BasicLangParser.VariableAssignmentContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link BasicLangParser#shreniInitialisation}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitShreniInitialisation(BasicLangParser.ShreniInitialisationContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link BasicLangParser#elementList}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitElementList(BasicLangParser.ElementListContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link BasicLangParser#shreniElements}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitShreniElements(BasicLangParser.ShreniElementsContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link BasicLangParser#shreniElement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitShreniElement(BasicLangParser.ShreniElementContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link BasicLangParser#if_stat}.
 	 * @param ctx the parse tree
@@ -144,12 +180,26 @@ public interface BasicLangVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitOrExpr(BasicLangParser.OrExprContext ctx);
 	/**
+	 * Visit a parse tree produced by the {@code shreniMultipleIndexedExpr}
+	 * labeled alternative in {@link BasicLangParser#expr}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitShreniMultipleIndexedExpr(BasicLangParser.ShreniMultipleIndexedExprContext ctx);
+	/**
 	 * Visit a parse tree produced by the {@code additiveExpr}
 	 * labeled alternative in {@link BasicLangParser#expr}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitAdditiveExpr(BasicLangParser.AdditiveExprContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code shreniIndexedExpr}
+	 * labeled alternative in {@link BasicLangParser#expr}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitShreniIndexedExpr(BasicLangParser.ShreniIndexedExprContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code relationalExpr}
 	 * labeled alternative in {@link BasicLangParser#expr}.
@@ -171,6 +221,24 @@ public interface BasicLangVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitAndExpr(BasicLangParser.AndExprContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link BasicLangParser#shreniIndexed}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitShreniIndexed(BasicLangParser.ShreniIndexedContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link BasicLangParser#shreniMultipleIndexed}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitShreniMultipleIndexed(BasicLangParser.ShreniMultipleIndexedContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link BasicLangParser#indexingExpr}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitIndexingExpr(BasicLangParser.IndexingExprContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link BasicLangParser#atom}.
 	 * @param ctx the parse tree

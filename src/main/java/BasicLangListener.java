@@ -47,6 +47,16 @@ public interface BasicLangListener extends ParseTreeListener {
 	 */
 	void exitBlock(BasicLangParser.BlockContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link BasicLangParser#kadakkuPurath}.
+	 * @param ctx the parse tree
+	 */
+	void enterKadakkuPurath(BasicLangParser.KadakkuPurathContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link BasicLangParser#kadakkuPurath}.
+	 * @param ctx the parse tree
+	 */
+	void exitKadakkuPurath(BasicLangParser.KadakkuPurathContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link BasicLangParser#samkhyaFunction}.
 	 * @param ctx the parse tree
 	 */
@@ -90,6 +100,56 @@ public interface BasicLangListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitAssignment(BasicLangParser.AssignmentContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link BasicLangParser#variableAssignment}.
+	 * @param ctx the parse tree
+	 */
+	void enterVariableAssignment(BasicLangParser.VariableAssignmentContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link BasicLangParser#variableAssignment}.
+	 * @param ctx the parse tree
+	 */
+	void exitVariableAssignment(BasicLangParser.VariableAssignmentContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link BasicLangParser#shreniInitialisation}.
+	 * @param ctx the parse tree
+	 */
+	void enterShreniInitialisation(BasicLangParser.ShreniInitialisationContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link BasicLangParser#shreniInitialisation}.
+	 * @param ctx the parse tree
+	 */
+	void exitShreniInitialisation(BasicLangParser.ShreniInitialisationContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link BasicLangParser#elementList}.
+	 * @param ctx the parse tree
+	 */
+	void enterElementList(BasicLangParser.ElementListContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link BasicLangParser#elementList}.
+	 * @param ctx the parse tree
+	 */
+	void exitElementList(BasicLangParser.ElementListContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link BasicLangParser#shreniElements}.
+	 * @param ctx the parse tree
+	 */
+	void enterShreniElements(BasicLangParser.ShreniElementsContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link BasicLangParser#shreniElements}.
+	 * @param ctx the parse tree
+	 */
+	void exitShreniElements(BasicLangParser.ShreniElementsContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link BasicLangParser#shreniElement}.
+	 * @param ctx the parse tree
+	 */
+	void enterShreniElement(BasicLangParser.ShreniElementContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link BasicLangParser#shreniElement}.
+	 * @param ctx the parse tree
+	 */
+	void exitShreniElement(BasicLangParser.ShreniElementContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link BasicLangParser#if_stat}.
 	 * @param ctx the parse tree
@@ -233,6 +293,18 @@ public interface BasicLangListener extends ParseTreeListener {
 	 */
 	void exitOrExpr(BasicLangParser.OrExprContext ctx);
 	/**
+	 * Enter a parse tree produced by the {@code shreniMultipleIndexedExpr}
+	 * labeled alternative in {@link BasicLangParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void enterShreniMultipleIndexedExpr(BasicLangParser.ShreniMultipleIndexedExprContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code shreniMultipleIndexedExpr}
+	 * labeled alternative in {@link BasicLangParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void exitShreniMultipleIndexedExpr(BasicLangParser.ShreniMultipleIndexedExprContext ctx);
+	/**
 	 * Enter a parse tree produced by the {@code additiveExpr}
 	 * labeled alternative in {@link BasicLangParser#expr}.
 	 * @param ctx the parse tree
@@ -244,6 +316,18 @@ public interface BasicLangListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitAdditiveExpr(BasicLangParser.AdditiveExprContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code shreniIndexedExpr}
+	 * labeled alternative in {@link BasicLangParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void enterShreniIndexedExpr(BasicLangParser.ShreniIndexedExprContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code shreniIndexedExpr}
+	 * labeled alternative in {@link BasicLangParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void exitShreniIndexedExpr(BasicLangParser.ShreniIndexedExprContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code relationalExpr}
 	 * labeled alternative in {@link BasicLangParser#expr}.
@@ -280,6 +364,36 @@ public interface BasicLangListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitAndExpr(BasicLangParser.AndExprContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link BasicLangParser#shreniIndexed}.
+	 * @param ctx the parse tree
+	 */
+	void enterShreniIndexed(BasicLangParser.ShreniIndexedContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link BasicLangParser#shreniIndexed}.
+	 * @param ctx the parse tree
+	 */
+	void exitShreniIndexed(BasicLangParser.ShreniIndexedContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link BasicLangParser#shreniMultipleIndexed}.
+	 * @param ctx the parse tree
+	 */
+	void enterShreniMultipleIndexed(BasicLangParser.ShreniMultipleIndexedContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link BasicLangParser#shreniMultipleIndexed}.
+	 * @param ctx the parse tree
+	 */
+	void exitShreniMultipleIndexed(BasicLangParser.ShreniMultipleIndexedContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link BasicLangParser#indexingExpr}.
+	 * @param ctx the parse tree
+	 */
+	void enterIndexingExpr(BasicLangParser.IndexingExprContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link BasicLangParser#indexingExpr}.
+	 * @param ctx the parse tree
+	 */
+	void exitIndexingExpr(BasicLangParser.IndexingExprContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link BasicLangParser#atom}.
 	 * @param ctx the parse tree

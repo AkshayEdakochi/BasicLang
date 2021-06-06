@@ -1,4 +1,4 @@
-
+import java.util.List;
 public class Value {
 
     public static Value VOID = new Value(new Object());
@@ -35,6 +35,15 @@ public class Value {
         return String.valueOf(value);
     }
 
+    // method to convert Value object of list to list
+    public List<Value> asList(){
+            return (List) value;
+    }
+
+    public boolean isBoolean(){
+        return value instanceof Boolean;
+    }
+
     public boolean isDouble() {
         return value instanceof Double;
     }
@@ -47,6 +56,11 @@ public class Value {
         return  (this.isDouble() || this.isInteger());
     }
     public boolean isString() {return  value instanceof String; }
+
+    public boolean isList(){
+            return value instanceof List;
+        
+    }
 
 
 
