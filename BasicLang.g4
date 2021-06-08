@@ -1,5 +1,4 @@
 grammar BasicLang;
-
 parse
  : statemets EOF
  ;
@@ -13,7 +12,9 @@ stat
  | if_stat
  | while_stat
  | log
+ | kadakkuPurath 
  | sweekarikkukaStatement
+ 
  //| samkhyaFunction
  | OTHER {System.err.println("unknown char: " + $OTHER.text);}
  ;
@@ -21,20 +22,49 @@ stat
  block
   : OBRACE statemets CBRACE
   ;
-
+kadakkuPurath
+	: ('കടക്കൂപുറത്ത്'|'കടക്കൂ പുറത്ത്') SCOL
+	;
 
 samkhyaFunction
  : 'സംഖ്യ' samkhyaExpr
  ;
 
 samkhyaExpr
- : OPAR (string|identifier) (',' integerAtom)? CPAR	#directSamkhyaCall
+ : OPAR (expr|identifier) (',' integerAtom)? CPAR	#directSamkhyaCall
  | OPAR sweekarikkukaExpr CPAR			#SamkhyaSweekarikkuka
  ;
 
 assignment
- : ID ASSIGN expr SCOL
- ;
+//Here change the Evalvisitor function of visitAssignment to  variableAssignment
+	: variableAssignment
+	| shreniInitialisation
+	| shreniElementAssignment
+	;
+
+variableAssignment
+	: ID ASSIGN expr SCOL
+	;
+shreniInitialisation
+	: ID ASSIGN elementList SCOL
+	;
+
+elementList
+	: OBRACKET shreniElements? ','? CBRACKET	//Receive the Value List and pass it upwards to shreniInitialisation
+	;
+shreniElements 									//Return a List of elements as Value from here
+	: shreniElement (',' shreniElement)*
+	;
+shreniElement
+	: elementList
+	| integerAtom
+	| floatAtom
+	| booleanAtom
+	| string
+	;
+shreniElementAssignment
+    : identifier (indexingExpr)+ ASSIGN expr SCOL
+    ;
 
 if_stat
  :  expr AANENKIL block (athavaBlock)* (allenkilBlock)?
@@ -45,21 +75,7 @@ if_stat
  allenkilBlock
     : ALLENKIL block
     ;
-/* 
-condition_block
- : expr stat_block
- ;
 
-stat_block_if
- : OBRACE block CBRACE
- | stat
- ;
-
-stat_block
- : OBRACE block CBRACE
- | stat
- ;
-*/
 while_stat
  : expr AAYIRIKKUMPOL block
  ;
@@ -76,7 +92,7 @@ sweekarikkukaStatement
  ;
 
 expr
- : MINUS expr                           #unaryMinusExpr
+ : MINUS expr	                        #unaryMinusExpr
  | NOT expr                             #notExpr
  | expr op=(MULT | DIV | MOD) expr      #multiplicationExpr
  | expr op=(PLUS | MINUS) expr          #additiveExpr
@@ -86,19 +102,29 @@ expr
  | expr OR expr                         #orExpr
  | samkhyaFunction						#samkhyaFunctionExpr
  | atom                                 #atomExpr
+ | shreniIndexed						#shreniIndexedExpr
+ | shreniMultipleIndexed				#shreniMultipleIndexedExpr	
  ;
 /* 
+ unaryMinusExpr
+	: MINUS expr
+	;
+notExpr
+	: NOT expr
+	;
+*/
+ 
+shreniIndexed
+	: identifier indexingExpr
+	;
+shreniMultipleIndexed
+	: shreniIndexed indexingExpr+
+	;
+//fragment
+indexingExpr
+	: OBRACKET expr CBRACKET
+	;
 atom
- :  OPAR expr CPAR #parExpr
- |  INT            #IntAtom     
- |  FLOAT          #FloatAtom
- |  (TRUE | FALSE) #booleanAtom
- |  ID             #idAtom
- |  STRING         #stringAtom
- |  NIL            #nilAtom
- ;
- */
- atom
  	: parathesisedExpr
 	| integerAtom
 	| floatAtom
@@ -154,6 +180,8 @@ OPAR : '(';
 CPAR : ')';
 OBRACE : '{';
 CBRACE : '}';
+OBRACKET : '[';
+CBRACKET : ']';
 
 TRUE : 'true';
 FALSE : 'false';
