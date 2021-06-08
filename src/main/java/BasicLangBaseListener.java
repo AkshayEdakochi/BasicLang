@@ -183,6 +183,18 @@ public class BasicLangBaseListener implements BasicLangListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterShreniElementAssignment(BasicLangParser.ShreniElementAssignmentContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitShreniElementAssignment(BasicLangParser.ShreniElementAssignmentContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterIf_stat(BasicLangParser.If_statContext ctx) { }
 	/**
 	 * {@inheritDoc}

@@ -96,6 +96,12 @@ public interface BasicLangVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitShreniElement(BasicLangParser.ShreniElementContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link BasicLangParser#shreniElementAssignment}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitShreniElementAssignment(BasicLangParser.ShreniElementAssignmentContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link BasicLangParser#if_stat}.
 	 * @param ctx the parse tree
 	 * @return the visitor result

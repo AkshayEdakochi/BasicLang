@@ -151,6 +151,16 @@ public interface BasicLangListener extends ParseTreeListener {
 	 */
 	void exitShreniElement(BasicLangParser.ShreniElementContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link BasicLangParser#shreniElementAssignment}.
+	 * @param ctx the parse tree
+	 */
+	void enterShreniElementAssignment(BasicLangParser.ShreniElementAssignmentContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link BasicLangParser#shreniElementAssignment}.
+	 * @param ctx the parse tree
+	 */
+	void exitShreniElementAssignment(BasicLangParser.ShreniElementAssignmentContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link BasicLangParser#if_stat}.
 	 * @param ctx the parse tree
 	 */

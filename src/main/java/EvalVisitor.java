@@ -130,7 +130,25 @@ public class EvalVisitor extends BasicLangBaseVisitor<Value> {
         Value listAsValue = visit(ctx.shreniElements());
         return listAsValue; 
     }
- 
+
+    @Override public Value visitShreniElementAssignment(BasicLangParser.ShreniElementAssignmentContext ctx) {
+        Value value = visit(ctx.expr());
+        List<BasicLangParser.IndexingExprContext> indexExprs = ctx.indexingExpr();
+        int[] indexes = new int[20];
+        int len = 0;
+        String id = ctx.identifier().ID().getText();
+        Value listElement = memory.get(id);
+        for (BasicLangParser.IndexingExprContext indexExpr : indexExprs){
+            Value index = visit(indexExpr.expr());
+            indexes[len] = index.asInteger();
+            len++;
+        }
+        for (int i=0; i<len-2;i++){
+            listElement = listElement.asList().get(indexes[i]);
+        }
+        listElement.asList().set(indexes[len-1],value);
+        //System.out.println(memory);
+        return value; }
 
 
 
